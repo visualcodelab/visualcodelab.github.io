@@ -1,1 +1,3 @@
-# visualcodelab.github.io
+# visualcodelab
+
+Структура: `<продукт>/<страница-код>/index.html`
