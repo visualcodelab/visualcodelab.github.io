@@ -1486,6 +1486,12 @@ html body .cols .n::before{content:'↓';position:absolute;top:-34px;left:50%;wi
 html body .cols b{text-align:left;text-indent:0}
 html body .cols p{justify-content:flex-start;text-align:left}
 }
+
+/* v114 телефон: без кружка со стрелкой, ровный промежуток между карточками */
+@media(max-width:560px){
+html body .cols{gap:16px 0!important}
+html body .cols .n::before{display:none!important}
+}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
