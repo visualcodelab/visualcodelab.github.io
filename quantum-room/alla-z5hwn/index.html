@@ -1474,6 +1474,18 @@ html body .coll .pr1{white-space:normal!important;font-size:var(--t-lg)!importan
 .chrt svg{animation:chpulse 3.4s ease-in-out infinite}
 html body .finale .last span.hrt .fh{display:block!important;width:19px!important;height:19px!important;margin:0 auto!important;vertical-align:baseline!important;fill:url(#hgold);stroke:rgba(255,248,224,.7);stroke-width:.25;stroke-linejoin:round;opacity:.92;filter:drop-shadow(0 1px 3px rgba(150,110,40,.28)) drop-shadow(0 0 7px rgba(255,238,196,.65));transform-origin:50% 50%;animation:chpulse 3.4s ease-in-out infinite!important}
 @media (prefers-reduced-motion:reduce){.chrt svg,html body .finale .last span.hrt .fh{animation:none!important}}
+
+/* v113 Раньше/Теперь: на узких экранах карточки друг под другом (подписи не раздвигают колонки) */
+html body .cols b{white-space:normal}
+html body .holdlab{text-wrap:balance}
+@media(max-width:560px){
+html body .cols{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;gap:38px 0!important}
+html body .cols div{display:block!important;grid-row:auto!important;grid-template-rows:none!important;position:relative}
+html body .cols::after{display:none!important}
+html body .cols .n::before{content:'↓';position:absolute;top:-34px;left:50%;width:30px;height:30px;margin-left:-15px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--paper);border:1px solid var(--gold);font-family:var(--sans);font-style:normal;font-size:14px;line-height:1;color:var(--gold-d)}
+html body .cols b{text-align:left;text-indent:0}
+html body .cols p{justify-content:flex-start;text-align:left}
+}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
