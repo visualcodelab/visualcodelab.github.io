@@ -1496,6 +1496,13 @@ html body .cols .n::before{display:none!important}
 /* v115 кольцо круга: целые пиксели, чтобы Safari не срезал края контура */
 html body .hold .ring{inset:-21px!important;box-sizing:border-box;-webkit-transform:translateZ(0);will-change:transform}
 @media(max-width:640px){html body .hold .ring{inset:-19px!important}}
+
+/* v116 карточки с волной: единая мягкая волна, не мешает тексту, края не видны */
+html body .insight::after,html body .holdnote::after{right:0;left:auto;top:0;bottom:0;width:100%;opacity:.2!important;background-position:right center;background-size:auto 112%;
+-webkit-mask-image:linear-gradient(90deg,transparent 38%,#000 78%,transparent 100%),linear-gradient(180deg,transparent 0,#000 28%,#000 72%,transparent 100%);
+mask-image:linear-gradient(90deg,transparent 38%,#000 78%,transparent 100%),linear-gradient(180deg,transparent 0,#000 28%,#000 72%,transparent 100%);
+-webkit-mask-composite:source-in;mask-composite:intersect}
+@media(max-width:640px){html body .insight::after,html body .holdnote::after{opacity:.14!important;-webkit-mask-image:linear-gradient(90deg,transparent 55%,#000 85%,transparent 100%),linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%);mask-image:linear-gradient(90deg,transparent 55%,#000 85%,transparent 100%),linear-gradient(180deg,transparent 0,#000 30%,#000 70%,transparent 100%)}}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
