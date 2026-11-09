@@ -1492,6 +1492,10 @@ html body .cols p{justify-content:flex-start;text-align:left}
 html body .cols{gap:16px 0!important}
 html body .cols .n::before{display:none!important}
 }
+
+/* v115 кольцо круга: целые пиксели, чтобы Safari не срезал края контура */
+html body .hold .ring{inset:-21px!important;box-sizing:border-box;-webkit-transform:translateZ(0);will-change:transform}
+@media(max-width:640px){html body .hold .ring{inset:-19px!important}}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
