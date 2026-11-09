@@ -1527,6 +1527,10 @@ html body .insight::after,html body .holdnote::after{width:54%!important;-webkit
 html body .insight::after,html body .holdnote::after{width:208px!important}
 @media(max-width:640px){html body .insight::after,html body .holdnote::after{width:176px!important}}
 @media(max-width:640px){html body .coll .pr1,html body .coll .pr1 em,html body #kriterii .pr1 em{white-space:normal!important}}
+html body .holdnote,html body .holdnote.ctrl,html body .holdnote.ctrl p{font-style:italic!important}
+html body .st li,html body .st li.cli label{text-wrap:pretty}
+html body .st .prac,html body .st .crit,html body .st .intro,html body .holdnote,html body .insight p,html body .pr-i p,html body .pcard p,html body .cr span,html body .coll .d,html body .sit .d,html body .sit .a,html body .cpan p,html body .ent .d,html body .pr-i .more p{text-wrap:pretty}
+@media(max-width:640px){html body .st li.cli label{padding-right:12px!important}}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
@@ -2291,5 +2295,6 @@ var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n,L=[];while
 L.forEach(function(t){if(/SCRIPT|STYLE/.test(t.parentNode.nodeName))return;var v=t.nodeValue;rep.forEach(function(r){if(v.indexOf(r[0])>-1)v=v.split(r[0]).join(r[1])});if(v!==t.nodeValue)t.nodeValue=v});
 }catch(e){}})();
 </script>
+<script>(function(){function fx(){try{var q='#trail .st li,#trail .st .intro,#trail .st .prac,#trail .st .crit,#kriterii .d,.cr span,.sit .d,.sit .a,.pr-i p,.coll .d,.insight p,.holdnote';document.querySelectorAll(q).forEach(function(el){var w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null),n,L=[];while(n=w.nextNode())L.push(n);L.forEach(function(t){var v=t.nodeValue.replace(/(^|[\s\u00a0])([А-Яа-яЁёA-Za-z]{1,3}) (?=\S)/g,'$1$2\u00a0');if(v!==t.nodeValue)t.nodeValue=v})})}catch(e){}}if(document.readyState==='complete')fx();else addEventListener('load',fx)})()</script>
 </body>
 </html>
