@@ -1531,6 +1531,7 @@ html body .holdnote,html body .holdnote.ctrl,html body .holdnote.ctrl p{font-sty
 html body .st li,html body .st li.cli label{text-wrap:pretty}
 html body .st .prac,html body .st .crit,html body .st .intro,html body .holdnote,html body .insight p,html body .pr-i p,html body .pcard p,html body .cr span,html body .coll .d,html body .sit .d,html body .sit .a,html body .cpan p,html body .ent .d,html body .pr-i .more p{text-wrap:pretty}
 @media(max-width:640px){html body .st li.cli label{padding-right:12px!important}}
+html body .st .bd,html body .pr-i .more{transition:none!important}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
@@ -1737,7 +1738,8 @@ html body .st .prac,html body .st .crit,html body .st .intro,html body .holdnote
     <div class="sign"><span>Мета Алхимия</span><i></i><span>Quantum Room</span><i></i><span>Алла</span></div>
   </section>
 
-<script>
+<script>function anim(el,to,done){if(el._r)cancelAnimationFrame(el._r);var from=Math.round(el.getBoundingClientRect().height),rd=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;to=Math.round(to);if(rd||from===to){el.style.maxHeight=to+'px';if(done)done();return}el.style.transition='none';el.style.maxHeight=from+'px';var t0=performance.now(),dur=Math.min(850,380+Math.abs(to-from)*.9);(function f(now){var p=Math.min(1,(now-t0)/dur),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;el.style.maxHeight=Math.round(from+(to-from)*e)+'px';if(p<1)el._r=requestAnimationFrame(f);else{el._r=0;if(done)done()}})(t0)}
+
 (function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var CC=['#9C3D36','#C96F4A','#D89A3D','#8E9A57','#5E8FA3','#6A5A8E','#A07BAF'];
@@ -1796,7 +1798,7 @@ html body .st .prac,html body .st .crit,html body .st .intro,html body .holdnote
     var e=document.createElement('div');e.className='pr-i';e.style.setProperty('--c',MC[i%7]);
     e.innerHTML='<div class="node"><i></i></div><div class="no">Принцип '+(i+1)+'</div><h3>'+d[0]+'</h3><p>'+d[1]+'</p><div class="more"><p style="margin-top:12px">'+d[2]+'</p></div><button type="button" class="deeper" aria-expanded="false">Глубже</button>';
     var b=e.querySelector('.deeper');
-    var mo=e.querySelector('.more');b.addEventListener('click',function(){var o=e.classList.toggle('open');b.setAttribute('aria-expanded',o);b.firstChild.nodeValue=o?'Свернуть':'Глубже';if(mo){if(o){mo.style.maxHeight=(mo.scrollHeight+4)+'px';}else{mo.style.maxHeight=mo.scrollHeight+'px';void mo.offsetHeight;mo.style.maxHeight='0px';}}});if(mo)mo.addEventListener('transitionend',function(){if(e.classList.contains('open'))mo.style.maxHeight='none';});
+    var mo=e.querySelector('.more');b.addEventListener('click',function(){var o=e.classList.toggle('open');b.setAttribute('aria-expanded',o);b.firstChild.nodeValue=o?'Свернуть':'Глубже';if(mo){anim(mo,o?mo.scrollHeight+4:0,function(){if(o)mo.style.maxHeight='none'});}});
     th.appendChild(e);prItems.push(e);
   });
   function updThread(){
@@ -1922,7 +1924,7 @@ function put(){$('cpin').innerHTML=B(cur);eqH();cpan.classList.remove('swap');}
     h+='<button type="button" class="acc">'+(done[i]?'Интегрировано':'Отметить: интегрировано')+'</button></div></div>';
     e.innerHTML=h;
     var hd=e.querySelector('.hd'),bd=e.querySelector('.bd');
-    hd.addEventListener('click',function(){var o=e.classList.toggle('open');hd.setAttribute('aria-expanded',o);bd.style.maxHeight=o?(bd.scrollHeight+40)+'px':'0px';});
+    hd.addEventListener('click',function(){var o=e.classList.toggle('open');hd.setAttribute('aria-expanded',o);anim(bd,o?bd.scrollHeight+40:0);});
     var acc=e.querySelector('.acc');
     acc.addEventListener('click',function(){e.classList.toggle('done');done[i]=e.classList.contains('done');store('stones',JSON.stringify(done));acc.textContent=done[i]?'Интегрировано':'Отметить: интегрировано';updT();});
     if(!d[2]){var hs=0,segs=e.querySelectorAll('.seg'),hw=e.querySelector('.hw'),hdesc=e.querySelector('.hdesc');
