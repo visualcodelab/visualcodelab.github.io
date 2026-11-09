@@ -1738,7 +1738,7 @@ html body .st .bd,html body .pr-i .more{transition:none!important}
     <div class="sign"><span>Мета Алхимия</span><i></i><span>Quantum Room</span><i></i><span>Алла</span></div>
   </section>
 
-<script>function anim(el,to,done){if(el._r)cancelAnimationFrame(el._r);var from=Math.round(el.getBoundingClientRect().height),rd=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;to=Math.round(to);if(rd||from===to){el.style.maxHeight=to+'px';if(done)done();return}el.style.transition='none';el.style.maxHeight=from+'px';var t0=performance.now(),dur=Math.min(850,380+Math.abs(to-from)*.9);(function f(now){var p=Math.min(1,(now-t0)/dur),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;el.style.maxHeight=Math.round(from+(to-from)*e)+'px';if(p<1)el._r=requestAnimationFrame(f);else{el._r=0;if(done)done()}})(t0)}
+<script>function anim(el,to,done){if(el._r)cancelAnimationFrame(el._r);to=Math.round(to);el.style.transition='none';el.style.maxHeight=to+'px';var rd=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;if(to>0&&!rd&&el.animate){try{el.animate([{opacity:0,transform:'translate3d(0,10px,0)'},{opacity:1,transform:'translate3d(0,0,0)'}],{duration:520,easing:'cubic-bezier(.22,.7,.2,1)'})}catch(e){}}if(done)done()}
 
 (function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
